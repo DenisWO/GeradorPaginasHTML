@@ -1,10 +1,11 @@
 package model.tags.tag_tabela;
 
 import model.tags.elemento_padrao.Elemento;
+import model.tags.elemento_padrao.TabelaPadrao;
 
 import java.util.ArrayList;
 
-public class TabelaLinha extends Elemento {
+public class TabelaLinha extends TabelaPadrao {
     ArrayList<TabelaDetalhe> detalhes;
     ArrayList<TabelaCabecalho> cabecalhos;
 
@@ -25,8 +26,15 @@ public class TabelaLinha extends Elemento {
 
     @Override
     public String geraResultado(){
+        return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
+    }
 
-
-        return null;
+    @Override
+    public String geraResultado(Elemento elemento) throws Exception {
+        if(elemento instanceof TabelaCabecalho || elemento instanceof TabelaDetalhe){
+            this.setConteudo(elemento.geraResultado());
+            return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
+        }
+        throw new Exception("Impossível inserir elementos que não façam parte da tabela!");
     }
 }

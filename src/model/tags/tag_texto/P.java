@@ -1,8 +1,8 @@
 package model.tags.tag_texto;
 
-import model.tags.elemento_padrao.Elemento;
+import model.tags.elemento_padrao.TextoPadrao;
 
-public class P extends Elemento {
+public class P extends TextoPadrao {
     private String resultado;
     public P(String nome) {
         super(nome);

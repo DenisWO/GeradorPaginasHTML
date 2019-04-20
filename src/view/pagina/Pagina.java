@@ -30,7 +30,6 @@ public class Pagina {
             this.finalPagina = conteudo.trim().substring(25, 39);
         }
     }
-
     public String getConteudo(){
         this.conteudo = this.inicioPagina + this.cabecalho.getConteudo()
                 + this.corpo.getConteudo() + this.rodape.getConteudo() + this.finalPagina;
@@ -40,10 +39,20 @@ public class Pagina {
     public void setCabecalho(String conteudo){
         this.cabecalho.setConteudo(conteudo);
     }
+    public String getCabecalho(){
+        return this.cabecalho.getConteudo();
+    }
     public void setCorpo(String conteudo){
         this.corpo.setConteudo(conteudo);
     }
+
+    public String getCorpo(){
+        return this.corpo.getConteudo();
+    }
     public void setRodape(String conteudo){
         this.rodape.setConteudo(conteudo);
+    }
+    public String getRodape(){
+        return this.rodape.getConteudo();
     }
 }

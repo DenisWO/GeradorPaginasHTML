@@ -1,11 +1,14 @@
 package view.pagina;
 
+import java.util.ArrayList;
+
 public class Rodape {
-    private String conteudo;
+    private ArrayList<String> conteudo;
     private static Rodape rodape;
 
     private Rodape(){
-        this.conteudo = "";
+        this.conteudo = new ArrayList<>();
+        this.setConteudo("<!--Inicio do rodape-->");
     }
 
     public static Rodape getRodape(){
@@ -16,9 +19,14 @@ public class Rodape {
         return rodape;
     }
     public void setConteudo(String conteudo){
-        this.conteudo = conteudo;
+        this.conteudo.add(conteudo);
     }
     public String getConteudo(){
-        return this.conteudo;
+
+        String resultado = "";
+        for(String content : this.conteudo){
+            resultado += content;
+        }
+        return resultado + "<!--Fim do rodape-->";
     }
 }

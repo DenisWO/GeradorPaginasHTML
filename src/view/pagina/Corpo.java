@@ -1,11 +1,14 @@
 package view.pagina;
 
+import java.util.ArrayList;
+
 public class Corpo {
-    private String conteudo;
+    private ArrayList<String> conteudo;
     private static Corpo corpo;
 
     private Corpo(){
-        this.conteudo = "";
+        this.conteudo = new ArrayList<>();
+        this.setConteudo("<!--Inicio do corpo-->");
     }
     public static Corpo getCorpo(){
         if(corpo == null){
@@ -14,9 +17,13 @@ public class Corpo {
         return corpo;
     }
     public void setConteudo(String conteudo){
-        this.conteudo = conteudo;
+        this.conteudo.add(conteudo);
     }
     public String getConteudo(){
-        return this.conteudo;
+        String resultado = "";
+        for(String content : this.conteudo){
+            resultado += content;
+        }
+        return resultado + "<!--Fim do corpo-->";
     }
 }

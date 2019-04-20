@@ -8,7 +8,7 @@ public class FabricaLista {
     private static Lista lista;
     private static ItemLista itemLista;
 
-    public FabricaLista(){
+    public FabricaLista() throws Exception {
         this.lista = new Lista("ul");
         this.itemLista = new ItemLista("li");
     }

@@ -16,10 +16,10 @@ public class FabricaAbstrata {
     public String getConteudoImagem(String conteudo){
         return new FabricaEstrutura().getEstruturaDiv(new FabricaImagens().getImagem(conteudo));
     }
-    public String getConteudoLista(){
+    public String getConteudoLista() throws Exception {
         return new FabricaLista().getLista();
     }
-    public void setConteudoLista(String conteudo){
+    public void setConteudoLista(String conteudo) throws Exception {
         new FabricaLista().setLista(new FabricaLista().getItemLista(conteudo));
     }
     public String getConteudoTabela(){

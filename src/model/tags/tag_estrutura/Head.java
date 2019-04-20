@@ -1,8 +1,8 @@
 package model.tags.tag_estrutura;
 
-import model.tags.elemento_padrao.Elemento;
+import model.tags.elemento_padrao.EstruturaPadrao;
 
-public class Head extends Elemento {
+public class Head extends EstruturaPadrao {
     private String resultado;
 
     public Head(String nome) {

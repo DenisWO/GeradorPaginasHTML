@@ -1,8 +1,8 @@
 package model.tags.tag_estrutura;
 
-import model.tags.elemento_padrao.Elemento;
+import model.tags.elemento_padrao.EstruturaPadrao;
 
-public class Body extends Elemento {
+public class Body extends EstruturaPadrao {
 
     public Body(String nome) {
         super(nome);
@@ -13,5 +13,6 @@ public class Body extends Elemento {
     public void setConteudo(String conteudo) {
         super.setConteudo(this.getConteudo() + conteudo);
     }
+
 
 }

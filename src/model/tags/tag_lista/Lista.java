@@ -1,10 +1,11 @@
 package model.tags.tag_lista;
 
 import model.tags.elemento_padrao.Elemento;
+import model.tags.elemento_padrao.ListaPadrao;
 
 import java.util.ArrayList;
 
-public class Lista extends Elemento {
+public class Lista extends ListaPadrao {
     ArrayList<ItemLista> itens;
 
     public Lista(String nome) {
@@ -16,6 +17,14 @@ public class Lista extends Elemento {
     public String geraResultado(){
         this.setConteudo();
         return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
+    }
+    public String geraResultado(Elemento elemento) throws Exception {
+        if(elemento instanceof ItemLista){
+            this.setConteudo(elemento.geraResultado());
+            return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
+        }
+
+        throw new Exception("Outro tipo de elemento não pode ser inserido na lista!");
     }
     public void setConteudo(){
         for(ItemLista li : itens){
