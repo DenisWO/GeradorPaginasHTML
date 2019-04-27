@@ -3,6 +3,7 @@ package view.pagina;
 import java.util.ArrayList;
 
 public class Corpo {
+    /*Implementacao do Decorator*/
     private ArrayList<String> conteudo;
     private static Corpo corpo;
 
@@ -10,6 +11,7 @@ public class Corpo {
         this.conteudo = new ArrayList<>();
         this.setConteudo("<!--Inicio do corpo-->");
     }
+
     public static Corpo getCorpo(){
         if(corpo == null){
             corpo = new Corpo();

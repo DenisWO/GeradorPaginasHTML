@@ -7,9 +7,6 @@ public class Div extends EstruturaPadrao {
 
     public Div(String nome) {
         super(nome);
-        this.geraResultado("");
-    }
-    public void setConteudo(String conteudo){
-        super.setConteudo(conteudo);
+        this.geraResultado();
     }
 }

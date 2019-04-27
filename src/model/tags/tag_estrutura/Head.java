@@ -1,19 +1,22 @@
 package model.tags.tag_estrutura;
 
+import model.tags.elemento_padrao.Elemento;
 import model.tags.elemento_padrao.EstruturaPadrao;
+import model.tags.tag_texto.Title;
 
 public class Head extends EstruturaPadrao {
-    private String resultado;
 
     public Head(String nome) {
         super(nome);
-        this.geraResultado("");
-    }
-    public String getResultado(String conteudo) {
-        return resultado;
+        this.geraResultado();
     }
 
-    public void setResultado(String resultado) {
-        this.resultado = resultado;
+    @Override
+    public String geraResultado(Elemento elemento) throws Exception {
+        if(elemento instanceof Title){
+            return super.geraResultado(elemento);
+        }
+
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package model.fabrica;
 
+import model.tags.elemento_padrao.Elemento;
 import model.tags.tag_estrutura.Body;
 import model.tags.tag_estrutura.Div;
 import model.tags.tag_estrutura.HTML;
@@ -18,16 +19,31 @@ public class FabricaEstrutura {
         this.html = new HTML("html");
         this.body = new Body("body");
         this.head = new Head("head");
-        html.setConteudo(head.geraResultado(""));
+        html.setConteudo(head.geraResultado());
         html.setConteudo(body.geraResultado());
 
         return html.geraResultado("") + "\n";
     }
 
-    public String getEstruturaDiv(String conteudo){
+    public String getEstruturaDiv(Object object) throws Exception {
         Div div = new Div("div");
+        if(object instanceof Elemento){
+            return div.geraResultado((Elemento) object);
+        }
+        else if(object instanceof String){
+            return div.geraResultado((String) object);
+        }
+        else{
+            throw new Exception()
+        }
 
         return div.geraResultado(conteudo);
+    }
+
+    public String getEstruturaDiv(Elemento elemento) throws Exception {
+        Div div = new Div("div");
+
+
     }
     public void setConteudoHtml(String conteudo){
         this.body.setConteudo(conteudo);

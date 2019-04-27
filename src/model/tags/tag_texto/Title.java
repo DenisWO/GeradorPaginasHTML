@@ -2,14 +2,12 @@ package model.tags.tag_texto;
 
 import model.tags.elemento_padrao.TextoPadrao;
 
-public class P extends TextoPadrao {
+public class Title extends TextoPadrao {
     private String resultado;
-    public P(String nome) throws Exception {
+    public Title(String nome) throws Exception {
         super(nome);
         this.geraResultado();
     }
-
-    @Override
     public String geraResultado(String conteudo) {
         this.setConteudo(conteudo);
         this.resultado = this.getAbreTag() + this.getConteudo() + this.getFechaTag();

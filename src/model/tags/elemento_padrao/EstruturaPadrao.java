@@ -1,10 +1,13 @@
 package model.tags.elemento_padrao;
 
-public abstract class EstruturaPadrao implements Elemento {
+import java.util.ArrayList;
 
+public abstract class EstruturaPadrao implements Elemento {
+    /*Classe padrão de tags de estrutura.
+    * Implementação do Composite*/
     private String abreTag;
     private String fechaTag;
-    private String conteudo;
+    private ArrayList<String> conteudo;
     private String nomeTag;
     private String resultado;
 
@@ -12,19 +15,18 @@ public abstract class EstruturaPadrao implements Elemento {
         this.nomeTag = nome;
         this.abreTag = "<" + this.nomeTag + ">";
         this.fechaTag = "</" + this.nomeTag + ">";
-        this.conteudo = "";
+        this.conteudo = new ArrayList<>();
     }
 
-    /*Método implementado da classe elemento*/
     public String geraResultado(String conteudo){
         this.setConteudo(conteudo);
         return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
     }
-    /*Método implementado da classe elemento*/
+
     public String geraResultado(){
         return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
     }
-    /*Metodo implementado da classe elemento*/
+
     public String geraResultado(Elemento elemento) throws Exception {
         this.setConteudo(elemento.geraResultado());
         return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
@@ -47,11 +49,15 @@ public abstract class EstruturaPadrao implements Elemento {
     }
 
     public String getConteudo() {
-        return conteudo;
+        String resultado = "";
+        for(String conteudo : this.conteudo){
+            resultado += conteudo;
+        }
+        return resultado;
     }
 
     public void setConteudo(String conteudo) {
-        this.conteudo = conteudo;
+        this.conteudo.add(conteudo);
     }
 
     public String getNomeTag() {

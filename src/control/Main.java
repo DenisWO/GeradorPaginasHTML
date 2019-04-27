@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         /*Uma Pagina é instanciada no main, e em seu construtor, são instanciados os elemenntos que fazem
         * parte da pagina*/
         Pagina pagina = Pagina.getPagina();

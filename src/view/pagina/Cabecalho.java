@@ -3,6 +3,7 @@ package view.pagina;
 import java.util.ArrayList;
 
 public class Cabecalho {
+    /*Implementação do Decorator*/
     private ArrayList<String> conteudo;
     private static Cabecalho cabecalho;
 

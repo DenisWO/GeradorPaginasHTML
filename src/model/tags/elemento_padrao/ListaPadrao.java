@@ -1,9 +1,13 @@
 package model.tags.elemento_padrao;
 
+import java.util.ArrayList;
+
 public abstract class ListaPadrao implements Elemento {
+    /*Classe padrão de tags de lista.
+     * Implementação do Composite*/
     private String abreTag;
     private String fechaTag;
-    private String conteudo;
+    private ArrayList<String> conteudo;
     private String nomeTag;
     private String resultado;
 
@@ -11,7 +15,7 @@ public abstract class ListaPadrao implements Elemento {
         this.nomeTag = nome;
         this.abreTag = "<" + this.nomeTag + ">";
         this.fechaTag = "</" + this.nomeTag + ">";
-        this.conteudo = "";
+        this.conteudo = new ArrayList<>();
     }
     @Override
     public String geraResultado(String conteudo){
@@ -44,11 +48,15 @@ public abstract class ListaPadrao implements Elemento {
     }
 
     public String getConteudo() {
-        return conteudo;
+        String resultado = "";
+        for(String content : this.conteudo){
+            resultado += content;
+        }
+        return resultado;
     }
 
     public void setConteudo(String conteudo) {
-        this.conteudo = conteudo;
+        this.conteudo.add(conteudo);
     }
 
     public String getNomeTag() {

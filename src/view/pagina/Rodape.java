@@ -3,6 +3,7 @@ package view.pagina;
 import java.util.ArrayList;
 
 public class Rodape {
+    /*Implementacao do Decorator*/
     private ArrayList<String> conteudo;
     private static Rodape rodape;
 

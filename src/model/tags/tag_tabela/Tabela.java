@@ -25,7 +25,6 @@ public class Tabela extends TabelaPadrao {
     }
 
     public String geraResultado(Elemento elemento) throws Exception {
-        /*Verifica se o elemento enviado é um objeto de TabelaLinha*/
         if(elemento instanceof TabelaLinha){
             this.setConteudo(elemento.geraResultado());
             return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
