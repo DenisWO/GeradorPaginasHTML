@@ -16,7 +16,7 @@ public class FabricaLista {
         itemLista.setConteudo(conteudo);
         return itemLista;
     }
-    public String getLista(){
+    public String getLista(Object[] objects){
         return lista.geraResultado();
     }
     public void setLista(ItemLista it){

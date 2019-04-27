@@ -15,17 +15,11 @@ public class FabricaTagTexto {
         this.p = new P("p");
     }
 
-    public String getH1(String conteudo){
-        return h1.geraResultado(conteudo);
+    public String getH1(Object object){
+        return this.h1.geraResultado(object);
     }
-    public String getH1(Elemento elemento) throws Exception {
-        return h1.geraResultado(elemento);
+    public String getP(Object object){
+        return this.p.geraResultado(object);
     }
 
-    public String getP(String conteudo){
-        return p.geraResultado(conteudo);
-    }
-    public String getP(Elemento elemento) throws Exception {
-        return p.geraResultado(elemento);
-    }
 }

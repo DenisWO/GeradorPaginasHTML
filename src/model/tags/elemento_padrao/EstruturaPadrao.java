@@ -9,7 +9,6 @@ public abstract class EstruturaPadrao implements Elemento {
     private String fechaTag;
     private ArrayList<String> conteudo;
     private String nomeTag;
-    private String resultado;
 
     public EstruturaPadrao(String nome){
         this.nomeTag = nome;
@@ -32,6 +31,26 @@ public abstract class EstruturaPadrao implements Elemento {
         return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
     }
 
+    public String geraResultado(Object object){
+        try{
+            if(object instanceof String){
+                return this.geraResultado((String) object);
+            }
+            else if(object instanceof Elemento){
+                return this.geraResultado((Elemento) object);
+            }
+            else if(object == null){
+                return this.geraResultado();
+            }
+            else{
+                throw new Exception("Erro na inserção de conteúdo do elemento!");
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
     public String getAbreTag() {
         return abreTag;
     }
@@ -68,11 +87,4 @@ public abstract class EstruturaPadrao implements Elemento {
         this.nomeTag = nomeTag;
     }
 
-    public String getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(String resultado) {
-        this.resultado = resultado;
-    }
 }

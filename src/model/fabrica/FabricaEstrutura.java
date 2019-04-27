@@ -25,27 +25,10 @@ public class FabricaEstrutura {
         return html.geraResultado("") + "\n";
     }
 
-    public String getEstruturaDiv(Object object) throws Exception {
-        Div div = new Div("div");
-        if(object instanceof Elemento){
-            return div.geraResultado((Elemento) object);
-        }
-        else if(object instanceof String){
-            return div.geraResultado((String) object);
-        }
-        else{
-            throw new Exception()
-        }
-
-        return div.geraResultado(conteudo);
-    }
-
-    public String getEstruturaDiv(Elemento elemento) throws Exception {
+    public String getEstruturaDiv(Object object){
         Div div = new Div("div");
 
+        return div.geraResultado(object);
+    }
 
-    }
-    public void setConteudoHtml(String conteudo){
-        this.body.setConteudo(conteudo);
-    }
 }

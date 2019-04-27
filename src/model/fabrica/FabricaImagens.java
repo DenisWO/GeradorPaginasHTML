@@ -1,5 +1,6 @@
 package model.fabrica;
 
+import model.tags.elemento_padrao.Elemento;
 import model.tags.tag_imagem.Imagem;
 
 public class FabricaImagens {
@@ -9,7 +10,13 @@ public class FabricaImagens {
     public FabricaImagens(){
         this.imagem = new Imagem("img");
     }
-    public String getImagem(String conteudo){
-        return imagem.geraResultado(conteudo);
+    public String getImagem(Object conteudo){
+        try{
+            return this.imagem.geraResultado(conteudo);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }

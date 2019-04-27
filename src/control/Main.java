@@ -1,6 +1,7 @@
 package control;
 
 import model.fabrica.FabricaAbstrata;
+import model.tags.tag_texto.H1;
 import view.Menu;
 import view.pagina.Pagina;
 
@@ -18,12 +19,16 @@ public class Main {
         * que possui dentro de si outras fábricas
         */
         FabricaAbstrata fabricaAbstrata = new FabricaAbstrata();
+        H1 h = new H1("h1");
+
+        System.out.println(fabricaAbstrata.getConteudoH1(h));
 
         /*Teste inicial da implementacao, utilizando a pagina e a fabrica abstrata*/
         pagina.setConteudo(fabricaAbstrata.getEstruturaHtml());
         System.out.println(pagina.getConteudo() + "\n");
 
         pagina.setCabecalho(fabricaAbstrata.getConteudoH1("Cabecalho"));
+        pagina.setCorpo(fabricaAbstrata.getConteudoH1(1));
         pagina.setCabecalho(fabricaAbstrata.getConteudoP("Paragrafo no cabecalho"));
         System.out.println(pagina.getCabecalho() + "\n");
 

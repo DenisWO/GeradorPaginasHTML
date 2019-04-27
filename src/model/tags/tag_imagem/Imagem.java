@@ -40,6 +40,26 @@ public class Imagem implements Elemento {
         throw new Exception("Tag de imagem não pode ter elementos dentro!");
     }
 
+    public String geraResultado(Object object){
+        try{
+            if(object instanceof String){
+                return this.geraResultado((String) object);
+            }
+            else if(object instanceof Elemento){
+                return this.geraResultado((Elemento) object);
+            }
+            else if(object == null){
+                return this.geraResultado();
+            }
+            else{
+                throw new Exception("Erro no tipo de objeto!");
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
     public String getNomeTag() {
         return nomeTag;
     }

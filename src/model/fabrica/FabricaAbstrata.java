@@ -1,7 +1,5 @@
 package model.fabrica;
 
-import model.tags.elemento_padrao.Elemento;
-
 public class FabricaAbstrata {
     /*Implementacao da Fachada*/
     private FabricaEstrutura fabricaEstrutura;
@@ -18,35 +16,57 @@ public class FabricaAbstrata {
         this.fabricaTagTexto = new FabricaTagTexto();
     }
 
-    public String getConteudoH1(String conteudo) throws Exception {
-        return this.fabricaEstrutura.getEstruturaDiv(this.fabricaTagTexto.getH1(conteudo));
-    }
-    public String getConteudoH1(Elemento elemento) throws Exception {
-        return this.fabricaEstrutura.getEstruturaDiv(this.fabricaTagTexto.getH1(elemento));
-    }
-    public String getConteudoP(String conteudo) throws Exception {
-        return this.fabricaEstrutura.getEstruturaDiv(this.fabricaTagTexto.getP(conteudo));
-    }
     public String getEstruturaHtml(){
         return new FabricaEstrutura().getEstruturaHtml();
     }
-    public String getConteudoImagem(String conteudo) throws Exception {
-        return new FabricaEstrutura().getEstruturaDiv(new FabricaImagens().getImagem(conteudo));
+
+    public String getConteudoH1(Object conteudo){
+        try{
+            return this.fabricaEstrutura.getEstruturaDiv(this.fabricaTagTexto.getH1(conteudo));
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
-    public String getConteudoLista() throws Exception {
-        return new FabricaLista().getLista();
+
+    /*Todos os retornos vem acompanhando de divs, para organização*/
+    public String getConteudoP(Object conteudo){
+        try{
+            return this.fabricaEstrutura.getEstruturaDiv(this.fabricaTagTexto.getP(conteudo));
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
-    public void setConteudoLista(String conteudo) throws Exception {
-        new FabricaLista().setLista(new FabricaLista().getItemLista(conteudo));
+
+    public String getConteudoImagem(Object conteudo) throws Exception {
+        try{
+            return this.fabricaEstrutura.getEstruturaDiv(this.fabricaImagens.getImagem(conteudo));
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
+    public String getConteudoLista(Object[] objects){
+        try{
+            return this.fabricaEstrutura.getEstruturaDiv(this.fabricaLista.getLista(objects));
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
     public String getConteudoTabela(){
-        return new FabricaTabela().getTabela();
+        try{
+            return this.fabricaEstrutura.getEstruturaDiv(this.fabricaTabela.getTabela());
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
-    public void setConteudoTabela(String conteudo){
-        new FabricaTabela().setTabela(new FabricaTabela().getTabelaLinha(conteudo));
-    }
-
-
-
-
 }

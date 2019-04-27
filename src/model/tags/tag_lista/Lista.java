@@ -26,6 +26,14 @@ public class Lista extends ListaPadrao {
 
         throw new Exception("Outro tipo de elemento não pode ser inserido na lista!");
     }
+    public String geraResultado(Object[] objects){
+        for(Object object : objects){
+            if(object instanceof ItemLista){
+                this.adicionaItens((ItemLista) object);
+            }
+        }
+        return this.geraResultado();
+    }
     public void setConteudo(){
         for(ItemLista li : itens){
             super.setConteudo(this.getConteudo() + li.getConteudo());

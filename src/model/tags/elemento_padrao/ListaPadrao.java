@@ -30,6 +30,26 @@ public abstract class ListaPadrao implements Elemento {
     public String geraResultado(Elemento elemento) throws Exception {
         throw new Exception("Elemento de lista não aceita colocar elementos internos!");
     }
+    public String geraResultado(Object object){
+        try{
+            if(object instanceof String){
+                return this.geraResultado((String) object);
+            }
+            else if(object instanceof Elemento){
+                return this.geraResultado((Elemento) object);
+            }
+            else if(object == null){
+                return this.geraResultado();
+            }
+            else{
+                throw new Exception("Erro na inserção de conteúdo no elemento!");
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 
     public String getAbreTag() {
         return abreTag;

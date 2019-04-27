@@ -30,9 +30,31 @@ public abstract class TextoPadrao implements Elemento {
 
     @Override
     public String geraResultado(Elemento elemento) throws Exception {
-        throw new Exception("Tag de texto não pode conter outra tag dentro!");
+        this.setConteudo(elemento.geraResultado());
+        return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
     }
 
+    @Override
+    public String geraResultado(Object object){
+        try{
+            if(object instanceof String){
+                return this.geraResultado((String) object);
+            }
+            else if(object instanceof Elemento){
+                return this.geraResultado((Elemento) object);
+            }
+            else if(object == null){
+                return this.geraResultado();
+            }
+            else{
+                throw new Exception("Erro na inserção de conteúdo do campo!");
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
     public String getAbreTag() {
         return abreTag;
     }

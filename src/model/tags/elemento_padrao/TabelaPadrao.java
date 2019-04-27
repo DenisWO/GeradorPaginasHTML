@@ -18,18 +18,42 @@ public abstract class TabelaPadrao implements Elemento{
         this.conteudo = new ArrayList<>();
     }
 
+    @Override
     public String geraResultado(String conteudo){
         this.setConteudo(conteudo);
         return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
     }
 
+    @Override
     public String geraResultado(){
         return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
     }
 
+    @Override
     public String geraResultado(Elemento elemento) throws Exception {
         this.setConteudo(elemento.geraResultado());
         return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
+    }
+    @Override
+    public String geraResultado(Object object){
+        try{
+            if(object instanceof String){
+                return this.geraResultado((String) object);
+            }
+            else if(object instanceof Elemento){
+                return this.geraResultado((Elemento) object);
+            }
+            else if(object == null){
+                return this.geraResultado();
+            }
+            else{
+                throw new Exception("Erro ao inserir conteúdo no elemento!");
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     public String getAbreTag() {

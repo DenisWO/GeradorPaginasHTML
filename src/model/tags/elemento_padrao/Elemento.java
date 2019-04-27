@@ -5,5 +5,5 @@ public interface Elemento {
     public String geraResultado() throws Exception;
     public String geraResultado(String conteudo);
     public String geraResultado(Elemento elemento) throws Exception;
-
+    public String geraResultado(Object object);
 }
