@@ -11,24 +11,15 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        /*Uma Pagina é instanciada no main, e em seu construtor, são instanciados os elemenntos que fazem
-        * parte da pagina*/
         Pagina pagina = Pagina.getPagina();
 
-        /*A FabricaAbstrata implementa o padrão Abstract Factory, onde temos a instancia de uma fábrica
-        * que possui dentro de si outras fábricas
-        */
         FabricaAbstrata fabricaAbstrata = new FabricaAbstrata();
-        H1 h = new H1("h1");
-
-        System.out.println(fabricaAbstrata.getConteudoH1(h));
 
         /*Teste inicial da implementacao, utilizando a pagina e a fabrica abstrata*/
         pagina.setConteudo(fabricaAbstrata.getEstruturaHtml());
         System.out.println(pagina.getConteudo() + "\n");
 
         pagina.setCabecalho(fabricaAbstrata.getConteudoH1("Cabecalho"));
-        pagina.setCorpo(fabricaAbstrata.getConteudoH1(1));
         pagina.setCabecalho(fabricaAbstrata.getConteudoP("Paragrafo no cabecalho"));
         System.out.println(pagina.getCabecalho() + "\n");
 
