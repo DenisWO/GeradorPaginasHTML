@@ -2,6 +2,7 @@ package control;
 
 import model.fabrica.FabricaAbstrata;
 import model.tags.tag_texto.H1;
+import model.tags.tag_texto.TextoSimples;
 import view.Menu;
 import view.pagina.Pagina;
 
@@ -17,19 +18,15 @@ public class Main {
 
         /*Teste inicial da implementacao, utilizando a pagina e a fabrica abstrata*/
         pagina.setConteudo(fabricaAbstrata.getEstruturaHtml());
-        System.out.println(pagina.getConteudo() + "\n");
 
-        pagina.setCabecalho(fabricaAbstrata.getConteudoH1("Cabecalho"));
-        pagina.setCabecalho(fabricaAbstrata.getConteudoP("Paragrafo no cabecalho"));
-        System.out.println(pagina.getCabecalho() + "\n");
+        pagina.setCabecalho(fabricaAbstrata.getConteudoH1(new TextoSimples("Cabecalho")));
+        pagina.setCabecalho(fabricaAbstrata.getConteudoP(new TextoSimples("Paragrafo no cabecalho")));
 
-        pagina.setCorpo(fabricaAbstrata.getConteudoH1("Corpo"));
-        pagina.setCorpo(fabricaAbstrata.getConteudoP("Paragrafo do corpo"));
-        System.out.println(pagina.getCorpo() + "\n");
+        pagina.setCorpo(fabricaAbstrata.getConteudoH1(new TextoSimples("Corpo")));
+        pagina.setCorpo(fabricaAbstrata.getConteudoP(new TextoSimples("Paragrafo do corpo")));
 
-        pagina.setRodape(fabricaAbstrata.getConteudoH1("Rodape"));
-        pagina.setRodape(fabricaAbstrata.getConteudoP("Paragrafo do rodape"));
-        System.out.println(pagina.getRodape() + "\n");
+        pagina.setRodape(fabricaAbstrata.getConteudoH1(new TextoSimples("Rodape")));
+        pagina.setRodape(fabricaAbstrata.getConteudoP(new TextoSimples("Paragrafo do rodape")));
 
         if(FileController.salvarArquivo(pagina.getConteudo())){
             System.out.println("Arquivo salvo com sucesso!");

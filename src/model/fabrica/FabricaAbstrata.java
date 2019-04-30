@@ -1,5 +1,8 @@
 package model.fabrica;
 
+import model.tags.elemento_padrao.Elemento;
+import model.tags.tag_estrutura.HTML;
+
 public class FabricaAbstrata {
     /*Implementacao da Fachada*/
     private FabricaEstrutura fabricaEstrutura;
@@ -16,11 +19,11 @@ public class FabricaAbstrata {
         this.fabricaTagTexto = new FabricaTagTexto();
     }
 
-    public String getEstruturaHtml(){
+    public HTML getEstruturaHtml(){
         return new FabricaEstrutura().getEstruturaHtml();
     }
 
-    public String getConteudoH1(Object conteudo){
+    public Elemento getConteudoH1(Elemento conteudo){
         try{
             return this.fabricaEstrutura.getEstruturaDiv(this.fabricaTagTexto.getH1(conteudo));
         }
@@ -31,7 +34,7 @@ public class FabricaAbstrata {
     }
 
     /*Todos os retornos vem acompanhando de divs, para organização*/
-    public String getConteudoP(Object conteudo){
+    public Elemento getConteudoP(Elemento conteudo){
         try{
             return this.fabricaEstrutura.getEstruturaDiv(this.fabricaTagTexto.getP(conteudo));
         }
@@ -41,7 +44,7 @@ public class FabricaAbstrata {
         }
     }
 
-    public String getConteudoImagem(Object conteudo) throws Exception {
+    public Elemento getConteudoImagem(Elemento conteudo) throws Exception {
         try{
             return this.fabricaEstrutura.getEstruturaDiv(this.fabricaImagens.getImagem(conteudo));
         }
@@ -50,23 +53,23 @@ public class FabricaAbstrata {
             return null;
         }
     }
-    public String getConteudoLista(Object[] objects){
-        try{
-            return this.fabricaEstrutura.getEstruturaDiv(this.fabricaLista.getLista(objects));
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
-
-    public String getConteudoTabela(){
-        try{
-            return this.fabricaEstrutura.getEstruturaDiv(this.fabricaTabela.getTabela());
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
+//    public Elemento getConteudoLista(Elemento elemento){
+//        try{
+//            return this.fabricaEstrutura.getEstruturaDiv(this.fabricaLista.getLista(elemento));
+//        }
+//        catch (Exception e){
+//            System.out.println(e.getMessage());
+//            return null;
+//        }
+//    }
+//
+//    public String getConteudoTabela(){
+//        try{
+//            return this.fabricaEstrutura.getEstruturaDiv(this.fabricaTabela.getTabela());
+//        }
+//        catch (Exception e){
+//            System.out.println(e.getMessage());
+//            return null;
+//        }
+//    }
 }

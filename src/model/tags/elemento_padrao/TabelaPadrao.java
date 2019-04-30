@@ -7,7 +7,7 @@ public abstract class TabelaPadrao implements Elemento{
      * Implementação do Composite*/
     private String abreTag;
     private String fechaTag;
-    private ArrayList<String> conteudo;
+    private ArrayList<Elemento> elementos;
     private String nomeTag;
     private String resultado;
 
@@ -15,45 +15,15 @@ public abstract class TabelaPadrao implements Elemento{
         this.nomeTag = nome;
         this.abreTag = "<" + this.nomeTag + ">";
         this.fechaTag = "</" + this.nomeTag + ">";
-        this.conteudo = new ArrayList<>();
+        this.elementos = new ArrayList<>();
     }
-
-    @Override
-    public String geraResultado(String conteudo){
-        this.setConteudo(conteudo);
-        return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
-    }
-
-    @Override
-    public String geraResultado(){
-        return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
-    }
-
-    @Override
-    public String geraResultado(Elemento elemento) throws Exception {
-        this.setConteudo(elemento.geraResultado());
-        return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
-    }
-    @Override
-    public String geraResultado(Object object){
-        try{
-            if(object instanceof String){
-                return this.geraResultado((String) object);
-            }
-            else if(object instanceof Elemento){
-                return this.geraResultado((Elemento) object);
-            }
-            else if(object == null){
-                return this.geraResultado();
-            }
-            else{
-                throw new Exception("Erro ao inserir conteúdo no elemento!");
-            }
+    public String geraResultadoTexto(){
+        String resultado = this.getAbreTag();
+        for(Elemento e : this.elementos){
+            resultado += e.geraResultadoTexto();
         }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            return null;
-        }
+
+        return resultado + this.getFechaTag();
     }
 
     public String getAbreTag() {
@@ -72,16 +42,12 @@ public abstract class TabelaPadrao implements Elemento{
         this.fechaTag = fechaTag;
     }
 
-    public String getConteudo() {
-        String resultado = "";
-        for(String c : this.conteudo){
-            resultado += c;
-        }
-        return resultado;
+    public ArrayList<Elemento> getConteudo() {
+        return this.elementos;
     }
 
-    public void setConteudo(String conteudo) {
-        this.conteudo.add(conteudo);
+    public void setConteudo(Elemento elemento) {
+        this.elementos.add(elemento);
     }
 
     public String getNomeTag() {

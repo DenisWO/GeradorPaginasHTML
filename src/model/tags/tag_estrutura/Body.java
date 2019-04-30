@@ -6,7 +6,6 @@ public class Body extends EstruturaPadrao {
 
     public Body(String nome) {
         super(nome);
-        this.geraResultado();
     }
 
 

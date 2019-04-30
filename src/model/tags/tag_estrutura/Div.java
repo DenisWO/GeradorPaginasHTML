@@ -7,6 +7,5 @@ public class Div extends EstruturaPadrao {
 
     public Div(String nome) {
         super(nome);
-        this.geraResultado();
     }
 }

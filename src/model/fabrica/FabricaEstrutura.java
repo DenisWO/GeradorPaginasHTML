@@ -12,23 +12,20 @@ public class FabricaEstrutura {
     * usuário ocorre*/
 
     private HTML html;
-    private Body body;
-    private Head head;
 
-    public String getEstruturaHtml(){
+    public HTML getEstruturaHtml(){
         this.html = new HTML("html");
-        this.body = new Body("body");
-        this.head = new Head("head");
-        html.setConteudo(head.geraResultado());
-        html.setConteudo(body.geraResultado());
 
-        return html.geraResultado("") + "\n";
+        return html;
     }
 
-    public String getEstruturaDiv(Object object){
+    public Elemento getEstruturaDiv(Elemento elemento){
         Div div = new Div("div");
+        div.setConteudo(elemento);
 
-        return div.geraResultado(object);
+        return div;
     }
+
+
 
 }

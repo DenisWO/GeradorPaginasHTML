@@ -7,49 +7,22 @@ public abstract class EstruturaPadrao implements Elemento {
     * Implementação do Composite*/
     private String abreTag;
     private String fechaTag;
-    private ArrayList<String> conteudo;
+    private ArrayList<Elemento> elementos;
     private String nomeTag;
 
     public EstruturaPadrao(String nome){
         this.nomeTag = nome;
         this.abreTag = "<" + this.nomeTag + ">";
         this.fechaTag = "</" + this.nomeTag + ">";
-        this.conteudo = new ArrayList<>();
+        this.elementos = new ArrayList<>();
     }
-
-    public String geraResultado(String conteudo){
-        this.setConteudo(conteudo);
-        return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
-    }
-
-    public String geraResultado(){
-        return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
-    }
-
-    public String geraResultado(Elemento elemento) throws Exception {
-        this.setConteudo(elemento.geraResultado());
-        return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
-    }
-
-    public String geraResultado(Object object){
-        try{
-            if(object instanceof String){
-                return this.geraResultado((String) object);
-            }
-            else if(object instanceof Elemento){
-                return this.geraResultado((Elemento) object);
-            }
-            else if(object == null){
-                return this.geraResultado();
-            }
-            else{
-                throw new Exception("Erro na inserção de conteúdo do elemento!");
-            }
+    public String geraResultadoTexto(){
+        String resultado = this.getAbreTag();
+        for(Elemento e : this.elementos){
+            resultado += e.geraResultadoTexto();
         }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            return null;
-        }
+
+        return resultado + this.getFechaTag();
     }
     public String getAbreTag() {
         return abreTag;
@@ -67,16 +40,12 @@ public abstract class EstruturaPadrao implements Elemento {
         this.fechaTag = fechaTag;
     }
 
-    public String getConteudo() {
-        String resultado = "";
-        for(String conteudo : this.conteudo){
-            resultado += conteudo;
-        }
-        return resultado;
+    public ArrayList<Elemento> getConteudo() {
+        return this.elementos;
     }
 
-    public void setConteudo(String conteudo) {
-        this.conteudo.add(conteudo);
+    public void setConteudo(Elemento elemento) {
+        this.elementos.add(elemento);
     }
 
     public String getNomeTag() {

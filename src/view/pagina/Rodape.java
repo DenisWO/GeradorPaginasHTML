@@ -1,15 +1,16 @@
 package view.pagina;
 
+import model.tags.elemento_padrao.Elemento;
+
 import java.util.ArrayList;
 
 public class Rodape {
     /*Implementacao do Decorator*/
-    private ArrayList<String> conteudo;
+    private ArrayList<Elemento> elementos;
     private static Rodape rodape;
 
     private Rodape(){
-        this.conteudo = new ArrayList<>();
-        this.setConteudo("<!--Inicio do rodape-->");
+        this.elementos = new ArrayList<>();
     }
 
     public static Rodape getRodape(){
@@ -19,15 +20,10 @@ public class Rodape {
 
         return rodape;
     }
-    public void setConteudo(String conteudo){
-        this.conteudo.add(conteudo);
+    public void setConteudo(Elemento elemento){
+        this.elementos.add(elemento);
     }
-    public String getConteudo(){
-
-        String resultado = "";
-        for(String content : this.conteudo){
-            resultado += content;
-        }
-        return resultado + "<!--Fim do rodape-->";
+    public ArrayList<Elemento> getConteudo(){
+        return this.elementos;
     }
 }

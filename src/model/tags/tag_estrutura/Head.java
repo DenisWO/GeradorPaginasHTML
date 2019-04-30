@@ -8,15 +8,9 @@ public class Head extends EstruturaPadrao {
 
     public Head(String nome) {
         super(nome);
-        this.geraResultado();
     }
 
-    @Override
-    public String geraResultado(Elemento elemento) throws Exception {
-        if(elemento instanceof Title){
-            return super.geraResultado(elemento);
-        }
-
-        return null;
+    public void setConteudo(Title title){
+        super.setConteudo(title);
     }
 }

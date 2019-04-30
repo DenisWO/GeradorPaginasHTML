@@ -10,9 +10,9 @@ public class FabricaImagens {
     public FabricaImagens(){
         this.imagem = new Imagem("img");
     }
-    public String getImagem(Object conteudo){
+    public Elemento getImagem(Elemento elemento){
         try{
-            return this.imagem.geraResultado(conteudo);
+            return this.imagem;
         }
         catch (Exception e){
             System.out.println(e.getMessage());

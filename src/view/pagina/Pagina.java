@@ -1,9 +1,12 @@
 package view.pagina;
 
+import model.tags.elemento_padrao.Elemento;
+import model.tags.tag_estrutura.HTML;
+
+import java.util.ArrayList;
+
 public class Pagina {
-    private String conteudo;
-    private String inicioPagina;
-    private String finalPagina;
+    private HTML html;
     private Cabecalho cabecalho;
     private Corpo corpo;
     private Rodape rodape;
@@ -13,9 +16,6 @@ public class Pagina {
         this.cabecalho = Cabecalho.getCabecalho();
         this.corpo = Corpo.getCorpo();
         this.rodape = Rodape.getRodape();
-        this.conteudo = "";
-        this.inicioPagina = "";
-        this.finalPagina = "";
     }
     public static Pagina getPagina(){
         if(pagina == null){
@@ -23,36 +23,44 @@ public class Pagina {
         }
         return pagina;
     }
-    public void setConteudo(String conteudo){
-        String htmlPadrao = "<html><head></head><body></body></html>";
-        if(this.conteudo.equals("") && htmlPadrao.equals(conteudo.trim())){
-            this.inicioPagina = conteudo.trim().substring(0, 25);
-            this.finalPagina = conteudo.trim().substring(25, 39);
-        }
+    public void setConteudo(HTML html){
+        this.html = html;
     }
     public String getConteudo(){
-        this.conteudo = this.inicioPagina + this.cabecalho.getConteudo()
-                + this.corpo.getConteudo() + this.rodape.getConteudo() + this.finalPagina;
+        String resultado = this.html.getAbreTag();
 
-        return this.conteudo;
+        for(Elemento e:  this.cabecalho.getConteudo()){
+            this.html.getBody().setConteudo(e);
+        }
+        for(Elemento e: this.corpo.getConteudo()){
+            this.html.getBody().setConteudo(e);
+        }
+        for(Elemento e: this.rodape.getConteudo()){
+            this.html.getBody().setConteudo(e);
+        }
+        for(Elemento elemento : this.html.getConteudo()){
+            resultado += elemento.geraResultadoTexto();
+        }
+
+        return resultado + this.html.getFechaTag();
     }
-    public void setCabecalho(String conteudo){
-        this.cabecalho.setConteudo(conteudo);
+    public void setCabecalho(Elemento elemento){
+        this.cabecalho.setConteudo(elemento);
     }
-    public String getCabecalho(){
+    public ArrayList<Elemento> getCabecalho(){
         return this.cabecalho.getConteudo();
     }
-    public void setCorpo(String conteudo){
-        this.corpo.setConteudo(conteudo);
+    public void setCorpo(Elemento elemento){
+        this.corpo.setConteudo(elemento);
     }
 
-    public String getCorpo(){
+    public ArrayList<Elemento> getCorpo(){
         return this.corpo.getConteudo();
     }
-    public void setRodape(String conteudo){
-        this.rodape.setConteudo(conteudo);
+    public void setRodape(Elemento elemento){
+        this.rodape.setConteudo(elemento);
     }
-    public String getRodape(){
+    public ArrayList<Elemento> getRodape(){
         return this.rodape.getConteudo();
     }
 }

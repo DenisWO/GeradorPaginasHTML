@@ -1,23 +1,21 @@
 package model.fabrica;
 
+import model.tags.elemento_padrao.Elemento;
 import model.tags.tag_lista.ItemLista;
 import model.tags.tag_lista.Lista;
+
+import java.util.ArrayList;
 
 public class FabricaLista {
     /*Fábrica responsável pelos elementos de lista, gerenciando os itens incluídos nela*/
     private Lista lista;
-    private ItemLista itemLista;
 
     public FabricaLista() throws Exception {
         this.lista = new Lista("ul");
-        this.itemLista = new ItemLista("li");
     }
-    public ItemLista getItemLista(String conteudo){
-        itemLista.setConteudo(conteudo);
-        return itemLista;
-    }
-    public String getLista(Object[] objects){
-        return lista.geraResultado();
+
+    public Elemento getLista(Elemento elemento){
+        return this.lista;
     }
     public void setLista(ItemLista it){
         lista.adicionaItens(it);

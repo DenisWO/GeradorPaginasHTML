@@ -7,7 +7,6 @@ public class H1 extends TextoPadrao {
 
     public H1(String nome) throws Exception {
         super(nome);
-        this.geraResultado();
     }
 
 

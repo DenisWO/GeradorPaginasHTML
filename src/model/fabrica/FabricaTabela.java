@@ -13,13 +13,10 @@ public class FabricaTabela {
         this.tabelaLinha = new TabelaLinha("tr");
     }
     public TabelaLinha getTabelaLinha(String conteudo){
-        tabelaLinha.setConteudo(conteudo);
-        return tabelaLinha;
+        return this.tabelaLinha;
     }
-    public String getTabela(){
-        return tabela.geraResultado();
+    public Tabela getTabela(){
+        return tabela;
     }
-    public void setTabela(TabelaLinha tr){
-        tabela.adicionaTabelaLinha(tr);
-    }
+
 }

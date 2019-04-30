@@ -2,11 +2,13 @@ package model.tags.tag_imagem;
 
 import model.tags.elemento_padrao.Elemento;
 
+import java.util.ArrayList;
+
 public class Imagem implements Elemento {
     private String nomeTag;
     private String abreTag;
     private String fechaTag;
-    private String conteudo;
+    private ArrayList<Elemento> elementos;
     private String resultado;
     private String parametros;
 
@@ -14,52 +16,18 @@ public class Imagem implements Elemento {
         this.nomeTag = nome;
         this.abreTag = "<" + this.nomeTag + ">";
         this.fechaTag = "</" + this.nomeTag + ">";
-        this.conteudo = "";
-        this.geraResultado("");
+        this.elementos = new ArrayList<>();
         this.parametros = " src=";
     }
-
-    @Override
-    public String geraResultado() throws Exception {
-        if(this.getConteudo().equals("")){
-            throw new Exception("Tag de imagem não pode ser vazia!");
+    public String geraResultadoTexto(){
+        String resultado = "";
+        for(Elemento e : this.elementos){
+            resultado += e.geraResultadoTexto();
         }
-        return this.getAbreTag() + this.getConteudo() + this.getFechaTag();
+
+        return resultado;
     }
 
-    @Override
-    public String geraResultado(String conteudo) {
-        this.setFechaTag("/>");
-        this.setConteudo(this.parametros + conteudo);
-        this.resultado = this.getAbreTag() + this.getConteudo() + this.getFechaTag();
-        return this.resultado;
-    }
-
-    @Override
-    public String geraResultado(Elemento elemento) throws Exception{
-        throw new Exception("Tag de imagem não pode ter elementos dentro!");
-    }
-
-    public String geraResultado(Object object){
-        try{
-            if(object instanceof String){
-                return this.geraResultado((String) object);
-            }
-            else if(object instanceof Elemento){
-                return this.geraResultado((Elemento) object);
-            }
-            else if(object == null){
-                return this.geraResultado();
-            }
-            else{
-                throw new Exception("Erro no tipo de objeto!");
-            }
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
     public String getNomeTag() {
         return nomeTag;
     }
@@ -84,12 +52,12 @@ public class Imagem implements Elemento {
         this.fechaTag = fechaTag;
     }
 
-    public String getConteudo() {
-        return conteudo;
+    public ArrayList<Elemento> getConteudo() {
+        return this.elementos;
     }
 
-    public void setConteudo(String conteudo) {
-        this.conteudo = conteudo;
+    public void setConteudo(Elemento elemento) {
+        this.elementos.add(elemento);
     }
 
     public String getResultado() {

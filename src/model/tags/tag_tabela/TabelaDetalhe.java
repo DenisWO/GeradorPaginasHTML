@@ -1,12 +1,10 @@
 package model.tags.tag_tabela;
 
-import model.tags.elemento_padrao.Elemento;
-import model.tags.elemento_padrao.TabelaPadrao;
+import model.tags.elemento_padrao.TextoPadrao;
 
-public class TabelaDetalhe extends TabelaPadrao {
+public class TabelaDetalhe extends TextoPadrao {
     public TabelaDetalhe(String nome) {
         super(nome);
-        this.geraResultado();
     }
 
 }

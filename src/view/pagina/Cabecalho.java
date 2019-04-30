@@ -1,15 +1,17 @@
 package view.pagina;
 
+import model.tags.elemento_padrao.Elemento;
+
+import javax.swing.text.AbstractDocument;
 import java.util.ArrayList;
 
 public class Cabecalho {
     /*Implementação do Decorator*/
-    private ArrayList<String> conteudo;
+    private ArrayList<Elemento> elementos;
     private static Cabecalho cabecalho;
 
     private Cabecalho(){
-        this.conteudo = new ArrayList<>();
-        this.setConteudo("<!--Inicio do cabecalho-->");
+        this.elementos = new ArrayList<>();
     }
 
     public static Cabecalho getCabecalho(){
@@ -18,16 +20,11 @@ public class Cabecalho {
         }
         return cabecalho;
     }
-    public String getConteudo(){
-
-        String resultado = "";
-        for(String content : this.conteudo){
-            resultado += content;
-        }
-        return resultado + "<!--Fim do cabecalho-->";
+    public ArrayList<Elemento> getConteudo(){
+        return this.elementos;
     }
 
-    public void setConteudo(String conteudo) {
-        this.conteudo.add(conteudo);
+    public void setConteudo(Elemento elemento) {
+        this.elementos.add(elemento);
     }
 }
